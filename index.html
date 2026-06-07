@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjana Pyasi | Interactive Marketing & Creator Operations Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#FF0033',      /* YouTube Red */
+                            darkred: '#C40026',  /* Dark Crimson */
+                            slate: '#121214',    /* Elegant Black */
+                            charcoal: '#1E1E22', /* Dark card background */
+                            cream: '#FAF8F5',    /* Main background */
+                            sand: '#F3EFE9'      /* Card hover/borders */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5DCD3;
+            border-radius: 99px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #FF0033;
+        }
+    </style>
+    <!-- Define fallback images and handles early in the Head to prevent loading ReferenceErrors -->
+    <script>
+        window.descriptiveFallbacks = {
+            "IMG_6519.jpg": {
+                title: "YouTube Brandcast Portrait",
+                desc: "Sanjana Pyasi smiling brightly in her beautiful hot-pink dress in front of the red YouTube '#Brandcast' backdrop signage."
+            },
+            "IMG_6502.jpg": {
+                title: "Main Stage Layout",
+                desc: "Sanjana posing in front of the lit up 'There's only one YouTube' mainstage backdrop signage."
+            },
+            "f09e2927-29e2-41d7-b7d2-9109e517058a.jpg": {
+                title: "Google Bangalore HQ Portrait",
+                desc: "Sanjana Pyasi smiling warmly while leaning against a large illuminated corporate Google 'G' sign board inside the office."
+            },
+            "IMG_7530.jpg": {
+                title: "CreatorVerse Host Crew",
+                desc: "Sanjana Pyasi alongside the executive crew and creator leads hosting behind-the-scenes event panels inside the boardroom."
+            },
+            "IMG_8191.jpg": {
+                title: "Themed Custom Cupcakes",
+                desc: "Rows of delicious corporate cupcakes topped with customized edible YouTube and Google red play-button logos."
+            },
+            "IMG_8195.jpg": {
+                title: "Creator Collective wall",
+                desc: "A beautifully lit sunset-orange backwall featuring interactive basketball hoops and branded sponsor placards."
+            },
+            "IMG_7531.jpg": {
+                title: "Corporate Visual Displays",
+                desc: "A wide wood-slat panel wall featuring a high-definition screen showing 'Creator Collective' logos and avatars."
+            },
+            "IMG_7218.jpg": {
+                title: "Creative Event Briefing Screen",
+                desc: "A sleek modern briefing theater with a wide screen displaying 'YouTube CreatorVerse — Creator. Media. Creative.' assets."
+            },
+            "IMG_8196.jpg": {
+                title: "Executive Boardroom Layout",
+                desc: "A pristine high-end Google meeting room featuring modern circular sound systems, dynamic timber styling, and whiteboard arrays."
+            }
+        };
+
+        window.fallbackToAlternative = function(imgNode) {
+            const fileName = imgNode.getAttribute('src');
+            const data = window.descriptiveFallbacks[fileName] || { title: "Campaign Portfolio Asset", desc: "A creative digital marketing asset." };
+            const parent = imgNode.parentNode;
+            parent.innerHTML = `
+                <div class="w-full h-full bg-gradient-to-br from-brand-slate to-brand-charcoal flex flex-col justify-center items-center p-6 text-center text-white border border-brand-sand/15">
+                    <span class="text-2xl mb-1">📸</span>
+                    <h5 class="text-xs font-black uppercase tracking-wider text-brand-red">${data.title}</h5>
+                    <p class="text-[10px] text-gray-300 font-light max-w-[200px] mt-2 leading-relaxed">${data.desc}</p>
+                </div>
+            `;
+        }
+    </script>
+</head>
+<body class="bg-brand-cream text-brand-slate overflow-x-hidden selection:bg-brand-red selection:text-white">
+
+    <!-- Recruiter Personalization & Alert bar -->
+    <div id="recruiter-bar" class="bg-gradient-to-r from-brand-red to-brand-darkred text-white py-3 px-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+            <div class="flex items-center gap-2">
+                <span class="flex h-2.5 w-2.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                </span>
+                <p class="font-medium tracking-wide">Recruiter Portal: Tailor this portfolio to your company instantly</p>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <input type="text" id="recruiter-company" placeholder="E.g. Unilever, Samsung..." class="px-4 py-1.5 text-xs rounded-full bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-white/60 w-full sm:w-48 transition-all">
+                <button onclick="personalizePortfolio()" class="bg-white text-brand-red hover:bg-brand-cream transition-all font-bold text-xs px-4 py-2 rounded-full shadow-sm whitespace-nowrap uppercase tracking-wider">
+                    Apply Layout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="py-6 px-6 lg:px-16 border-b border-brand-sand/60 bg-brand-cream/90 backdrop-blur-md sticky top-[80px] sm:top-[50px] z-40 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold tracking-tight text-brand-slate flex items-center gap-2">
+                SANJANA<span class="text-brand-red">PYASI</span>
+                <span class="text-[10px] uppercase bg-brand-slate text-brand-cream px-2 py-0.5 rounded tracking-widest font-normal">2026</span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-gray-500">
+                <a href="#about" class="hover:text-brand-red transition-colors">About Me</a>
+                <a href="#experience" class="hover:text-brand-red transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-brand-red transition-colors">Projects & KMS</a>
+                <a href="#achievements" class="hover:text-brand-red transition-colors">Creator Hub</a>
+                <a href="#gallery" class="hover:text-brand-red transition-colors">Event Gallery</a>
+                <a href="#skills" class="hover:text-brand-red transition-colors">Match Score</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="toggleResumeModal()" class="border-2 border-brand-slate hover:bg-brand-slate hover:text-white transition-all text-xs font-bold px-4 py-2.5 rounded-full flex items-center gap-1.5">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Resume Quick View</span>
+                </button>
+                <a href="#contact" class="bg-brand-red hover:bg-brand-darkred text-white transition-all text-xs font-bold px-5 py-3 rounded-full shadow-md flex items-center gap-2 group">
+                    <span>Let's Connect</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Entry Section -->
+    <section id="hero" class="pt-24 pb-16 px-6 lg:px-16 relative overflow-hidden">
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-orange-100 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left Info (Column span 7) -->
+            <div class="lg:col-span-7 space-y-8">
+                <div class="flex flex-wrap gap-2 items-center">
+                    <div id="welcome-badge" class="inline-flex items-center gap-2 bg-brand-red/10 text-brand-red px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest">
+                        <span>⚡</span> Google Campaign Specialist
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 px-4 py-1.5 rounded-full text-xs font-bold">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-red"></i>
+                        <span>Bengaluru, India</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h1 class="text-4xl sm:text-6xl font-serif font-bold leading-tight text-brand-slate">
+                        Connecting brands, creators, and <span class="text-brand-red">scalable ops.</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed max-w-2xl">
+                        I am Sanjana Pyasi—a creative digital marketing professional currently leading end-to-end creator, content, and campaign operations at <span class="font-semibold text-brand-slate">Google (YouTube)</span> across global enterprise advertisers like <span class="font-semibold text-brand-red">L'Oréal, Unilever, and Samsung</span>.
+                    </p>
+                </div>
+
+                <!-- Strategic Stats -->
+                <div class="grid grid-cols-3 gap-6 py-6 border-y border-brand-sand max-w-xl">
+                    <div>
+                        <div class="text-3xl font-black text-brand-slate">40%</div>
+                        <p class="text-[11px] text-gray-400 uppercase font-bold tracking-wider mt-1">Manual Effort Saved</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-brand-red">15+</div>
+                        <p class="text-[11px] text-gray-400 uppercase font-bold tracking-wider mt-1">Google Events Managed</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-brand-slate">45+</div>
+                        <p class="text-[11px] text-gray-400 uppercase font-bold tracking-wider mt-1">Creators Managed</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="bg-brand-slate hover:bg-black text-white px-7 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center gap-2">
+                        <span>Inspect Campaigns</span>
+                        <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#gallery" class="border-2 border-brand-sand hover:border-brand-slate px-7 py-4 rounded-full font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                        <span>Event Gallery</span>
+                        <i data-lucide="image" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Visual: Sanjana's Hero Photo -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="relative w-80 h-96 sm:w-96 sm:h-[480px] group">
+                    <div class="absolute inset-0 bg-brand-red rounded-[2.5rem] rotate-3 scale-95 opacity-25 group-hover:rotate-6 transition-transform duration-300"></div>
+                    <div class="absolute inset-0 bg-brand-slate rounded-[2.5rem] -rotate-3 scale-95 opacity-10 group-hover:-rotate-6 transition-transform duration-300"></div>
+                    
+                    <div class="absolute inset-0 rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_6519.jpg" alt="Sanjana Pyasi" class="w-full h-full object-cover object-center" onerror="fallbackToAlternative(this)">
+                    </div>
+
+                    <div class="absolute -bottom-4 -right-4 bg-brand-slate text-white px-4 py-2.5 rounded-2xl shadow-xl border border-white/10 text-xs font-bold flex items-center gap-1.5 rotate-6">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block animate-pulse"></span>
+                        <span>YouTube Brandcast</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Professional Experience & Academics Timeline -->
+    <section id="about" class="py-24 px-6 lg:px-16 bg-white border-y border-brand-sand/60">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red uppercase text-xs font-black tracking-widest">Career Architecture</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-slate">Professional Track Record</h2>
+                <p class="text-gray-500 text-sm font-light">Combining media management knowledge with operational rigor to execute on-time and on-brief campaigns.</p>
+                
+                <div class="inline-flex p-1 bg-brand-cream rounded-full border border-brand-sand mt-6">
+                    <button id="btn-job-track" onclick="switchAboutTab('jobs')" class="px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all bg-brand-slate text-brand-cream">
+                        Work Experience
+                    </button>
+                    <button id="btn-edu-track" onclick="switchAboutTab('edu')" class="px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all text-gray-500 hover:text-brand-slate">
+                        Education & Certifications
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab 1: Experience Detail Timeline -->
+            <div id="tab-jobs" class="transition-all duration-300">
+                <div class="max-w-4xl mx-auto space-y-8">
+                    
+                    <!-- Google -->
+                    <div class="p-8 bg-brand-cream rounded-3xl border border-brand-sand/60 relative flex flex-col md:flex-row gap-6 hover:shadow-md transition-all">
+                        <div class="md:w-1/4">
+                            <span class="text-xs font-black tracking-wider text-brand-red uppercase">Jun 2024 - Present</span>
+                            <h4 class="text-lg font-bold text-brand-slate mt-1">Google</h4>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Bengaluru, India</p>
+                        </div>
+                        <div class="md:w-3/4 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h4 class="text-lg font-bold text-brand-slate">Digital Marketing Apprentice</h4>
+                                <span class="bg-brand-red/10 text-brand-red text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Google (YouTube)</span>
+                            </div>
+                            <ul class="space-y-2 text-xs text-gray-600 font-light list-disc pl-4 leading-relaxed">
+                                <li>Manage end-to-end creator and campaign operations for enterprise advertisers including <span class="font-semibold text-brand-slate">L'Oréal, Unilever, and Samsung</span> across YouTube and Google Ads.</li>
+                                <li>Execute multiple concurrent marketing campaigns by coordinating agencies, creators, sales, and operations teams to deliver on time and on brief.</li>
+                                <li>Built and automated 4+ campaign reporting dashboards using <span class="font-semibold text-brand-red">Google Apps Script</span>, Excel macros, and Google Sheets, cutting manual reporting effort by <span class="font-semibold text-brand-red">40%</span>.</li>
+                                <li>Analyze campaign metrics, audience insights, and revenue data to surface optimization levers, improving campaign performance and advertiser ROI.</li>
+                                <li>Drove operations for <span class="font-semibold text-brand-slate">15+ creator and advertiser events</span> end-to-end, owning logistics, stakeholder communication, and execution timelines.</li>
+                                <li>Produced campaign insight decks, creative lookbooks, and advertiser-facing presentations to fuel marketplace and partnership pitches.</li>
+                                <li>Analyzed <span class="font-semibold text-brand-slate">600+ YouTube Shorts and Instagram Reels</span> to surface content trends and shape creative recommendations for enterprise advertisers.</li>
+                                <li>Partner cross-functionally with Marketing, Sales, Creative, and Operations to standardize campaign workflows and improve reporting accuracy.</li>
+                                <li>Maintain reporting rigor for weekly business reviews and leadership updates, ensuring accurate KPI tracking across the portfolio.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Extramarks -->
+                    <div class="p-8 bg-brand-cream rounded-3xl border border-brand-sand/60 relative flex flex-col md:flex-row gap-6 hover:shadow-md transition-all">
+                        <div class="md:w-1/4">
+                            <span class="text-xs font-black tracking-wider text-gray-400 uppercase">Jun 2023 - Dec 2023</span>
+                            <h4 class="text-lg font-bold text-brand-slate mt-1">Extramarks</h4>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Noida, India</p>
+                        </div>
+                        <div class="md:w-3/4 space-y-3">
+                            <h4 class="text-lg font-bold text-brand-slate">Content & Marketing Intern</h4>
+                            <ul class="space-y-2 text-xs text-gray-600 font-light list-disc pl-4 leading-relaxed">
+                                <li>Produced SEO-focused marketing content, B2B white papers, and campaign assets to support digital growth initiatives and lead generation.</li>
+                                <li>Coordinated content production timelines with internal content, design, and product stakeholders to ensure timely campaign delivery and brand consistency.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bizgurukul -->
+                    <div class="p-8 bg-brand-cream rounded-3xl border border-brand-sand/60 relative flex flex-col md:flex-row gap-6 hover:shadow-md transition-all">
+                        <div class="md:w-1/4">
+                            <span class="text-xs font-black tracking-wider text-gray-400 uppercase">Jun 2022 - Aug 2022</span>
+                            <h4 class="text-lg font-bold text-brand-slate mt-1">Bizgurukul</h4>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Remote</p>
+                        </div>
+                        <div class="md:w-3/4 space-y-3">
+                            <h4 class="text-lg font-bold text-brand-slate">Content & Marketing Intern</h4>
+                            <ul class="space-y-2 text-xs text-gray-600 font-light list-disc pl-4 leading-relaxed">
+                                <li>Developed YouTube and Instagram content aligned to brand objectives, growing engagement across owned channels.</li>
+                                <li>Owned social media campaign coordination including content scripting, editing, and publishing across platforms.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tab 2: Education & Certifications -->
+            <div id="tab-edu" class="hidden transition-all duration-300">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Academics -->
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-black uppercase tracking-widest text-brand-red border-b pb-2 border-brand-sand">Academic Timeline</h4>
+                        <div class="relative pl-6 border-l-2 border-brand-red/30 space-y-6">
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-brand-red"></div>
+                                <span class="text-xs font-black tracking-wider text-brand-red">2022 - 2024</span>
+                                <h5 class="text-base font-bold text-brand-slate">MBA, Media Management</h5>
+                                <p class="text-xs text-gray-500 font-medium">Amity University, Noida</p>
+                                <p class="text-xs text-gray-400 mt-1">Deepened expertise in digital strategy, media planning, and creative operations.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-brand-slate"></div>
+                                <span class="text-xs font-black tracking-wider text-gray-400">2019 - 2022</span>
+                                <h5 class="text-base font-bold text-brand-slate">BA, Journalism & Mass Communication</h5>
+                                <p class="text-xs text-gray-500 font-medium">SAGE University, Indore</p>
+                                <p class="text-xs text-gray-400 mt-1">Built a strong foundation in media, storytelling, and content creation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-black uppercase tracking-widest text-brand-slate border-b pb-2 border-brand-sand">Certifications</h4>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="p-4 bg-brand-cream rounded-xl border border-brand-sand flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-brand-red"></i>
+                                <div>
+                                    <h6 class="text-xs font-bold text-brand-slate">Google Digital Marketing & E-Commerce</h6>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Professional Certificate</p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-brand-cream rounded-xl border border-brand-sand flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-brand-red"></i>
+                                <div>
+                                    <h6 class="text-xs font-bold text-brand-slate">Google Ads Search Certification</h6>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Google Academy</p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-brand-cream rounded-xl border border-brand-sand flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-brand-slate"></i>
+                                <div>
+                                    <h6 class="text-xs font-bold text-brand-slate font-sans">Foundations of Digital Marketing & E-commerce</h6>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase">Certificate</p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-brand-cream rounded-xl border border-brand-sand flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-brand-slate"></i>
+                                <div>
+                                    <h6 class="text-xs font-bold text-brand-slate font-sans">Content Marketing Foundations</h6>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase">Credential</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Deep-Dive Campaign Projects with Live KMS Simulator -->
+    <section id="projects" class="py-24 px-6 lg:px-16">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-6">
+                <div class="space-y-4">
+                    <span class="text-brand-red uppercase text-xs font-black tracking-widest">Campaign Deep-Dive</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-slate">Operational Showcases</h2>
+                    <p class="text-gray-500 text-sm max-w-xl font-light">Interactive tracking of campaign roles, metrics, and custom dashboard databases designed at Google.</p>
+                </div>
+            </div>
+
+            <!-- Projects Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Navigation -->
+                <div class="lg:col-span-5 space-y-3">
+                    <div onclick="selectCampaign(1)" id="cp-card-1" class="p-5 rounded-2xl border-2 border-brand-red bg-white shadow-sm cursor-pointer transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-brand-red uppercase tracking-wider">Project 01</span>
+                            <span class="text-[10px] font-bold bg-brand-red/10 text-brand-red px-2 py-0.5 rounded-full uppercase">Google Events</span>
+                        </div>
+                        <h4 class="text-base font-bold text-brand-slate mt-2">CreatorVerse, Brandcast & FanFest</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1">Logistics, onboarding, execution timelines, and stakeholder alignment.</p>
+                    </div>
+
+                    <div onclick="selectCampaign(2)" id="cp-card-2" class="p-5 rounded-2xl border border-brand-sand/75 hover:border-brand-red/40 bg-white shadow-sm cursor-pointer transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Project 02</span>
+                            <span class="text-[10px] font-bold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full uppercase">Brand Deals</span>
+                        </div>
+                        <h4 class="text-base font-bold text-brand-slate mt-2">Brand Deals & SpeedConnects</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1">Creator-brand matchmaking, tracking systems, and performance reporting.</p>
+                    </div>
+
+                    <div onclick="selectCampaign(3)" id="cp-card-3" class="p-5 rounded-2xl border border-brand-sand/75 hover:border-brand-red/40 bg-white shadow-sm cursor-pointer transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Project 03</span>
+                            <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full uppercase">Agency Ops</span>
+                        </div>
+                        <h4 class="text-base font-bold text-brand-slate mt-2">Pseudo Agency Relationship Manager</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1">Supporting agency partners, coordinating details, and insight reviews.</p>
+                    </div>
+
+                    <div onclick="selectCampaign(4)" id="cp-card-4" class="p-5 rounded-2xl border border-brand-sand/75 hover:border-brand-red/40 bg-white shadow-sm cursor-pointer transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Project 04</span>
+                            <span class="text-[10px] font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded-full uppercase">Dashboard KMS</span>
+                        </div>
+                        <h4 class="text-base font-bold text-brand-slate mt-2">Meeting Records & KMS Dashboard</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1">Automated Sheets templates reducing weekly manual effort by 40%.</p>
+                    </div>
+                </div>
+
+                <!-- Live Display Window -->
+                <div class="lg:col-span-7 bg-[#FAF8F5] border border-brand-sand rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
+                    <div id="campaign-view-inner" class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-brand-sand pb-4">
+                            <div class="space-y-1">
+                                <span id="camp-tag" class="text-[10px] uppercase font-black tracking-widest text-brand-red">Creator Ecosystem</span>
+                                <h3 id="camp-title" class="text-xl sm:text-2xl font-bold text-brand-slate">CreatorVerse, Creator Collective, Brandcast & YouTube Fanfest</h3>
+                            </div>
+                            <span id="camp-id" class="text-4xl font-serif text-brand-sand">01</span>
+                        </div>
+
+                        <p id="camp-desc" class="text-sm text-gray-500 font-light leading-relaxed">
+                            Supported planning and execution of large-scale creator ecosystem events designed to connect creators, advertisers, agencies, and internal stakeholders.
+                        </p>
+
+                        <div class="space-y-3 pt-4">
+                            <h5 class="text-xs font-bold uppercase tracking-wider text-brand-slate">Key Responsibilities & Deliverables</h5>
+                            <ul id="camp-deliverables" class="space-y-2 text-xs text-gray-600 font-light">
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                                    <span>Event operations and logistics coordination.</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                                    <span>Stakeholder communication and alignment.</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                                    <span>Creator onboarding, operational checklists, and general support.</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                                    <span>Timeline management, cross-functional tracking, and error-free execution.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic database simulator (loads on selection of project 4) -->
+                    <div id="kms-simulation-widget" class="hidden mt-6 p-4 bg-white border border-brand-sand rounded-2xl space-y-3">
+                        <div class="flex items-center justify-between text-xs font-bold text-gray-500 uppercase">
+                            <span>💻 Sanjana's Automated KMS Database Demo</span>
+                            <span class="text-green-600 flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span> Live Apps Script Feed</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-50 p-2 rounded-lg border border-gray-100">
+                                <span class="block font-bold text-gray-800">15+</span>
+                                <span class="text-gray-400 text-[10px]">Events Monitored</span>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded-lg border border-gray-100">
+                                <span class="block font-bold text-gray-800">40% Less</span>
+                                <span class="text-gray-400 text-[10px]">Manual Effort</span>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded-lg border border-gray-100">
+                                <span class="block font-bold text-gray-800">100% On-Time</span>
+                                <span class="text-gray-400 text-[10px]">Delivery Track</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-brand-sand text-[10px] text-gray-400 uppercase tracking-widest font-bold flex items-center justify-between">
+                        <span>Click other cards to inspect projects</span>
+                        <span class="text-brand-red font-extrabold flex items-center gap-1">Verified Google Ops <i data-lucide="shield-check" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Hub & Personal Achievements (PDF Page 11) -->
+    <section id="achievements" class="py-24 px-6 lg:px-16 bg-brand-cream border-t border-brand-sand/60">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red uppercase text-xs font-black tracking-widest">Audience Curation</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-slate">Creator Mindset & Achievements</h2>
+                <p class="text-gray-500 text-sm font-light">I don't just strategy-map content — I build and scale active organic communities myself. Explore my live metric proofs.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white p-8 sm:p-12 rounded-[2.5rem] border border-brand-sand shadow-sm relative">
+                <div class="absolute -top-4 -right-4 w-12 h-12 bg-yellow-300 rounded-full rotate-12 -z-10 opacity-70"></div>
+
+                <!-- Simulated Instagram Profile View -->
+                <div class="md:col-span-5 bg-brand-slate text-white rounded-[2.5rem] p-4 border-4 border-brand-slate max-w-[280px] mx-auto w-full">
+                    <div class="w-20 h-4 bg-brand-charcoal mx-auto rounded-full mb-4"></div>
+                    <div class="space-y-4 px-2">
+                        <div class="flex items-center justify-between text-[11px] font-bold">
+                            <span>sanjnap_</span>
+                            <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-red-600 p-[2px]">
+                                <div class="w-full h-full rounded-full bg-brand-slate flex items-center justify-center font-bold text-xs">SP</div>
+                            </div>
+                            <div class="flex-1 flex justify-around text-center">
+                                <div><span class="block text-xs font-bold">134</span><span class="text-[8px] text-gray-400">Posts</span></div>
+                                <div><span class="block text-xs font-bold">10.2K</span><span class="text-[8px] text-gray-400">Followers</span></div>
+                                <div><span class="block text-xs font-bold">460</span><span class="text-[8px] text-gray-400">Following</span></div>
+                            </div>
+                        </div>
+
+                        <div class="text-[9px] space-y-1">
+                            <p class="font-bold">Sanjana Pyasi | Content Creator ✨</p>
+                            <p class="text-gray-400">Digital native making campaign ops and lifestyle stories seamless.</p>
+                        </div>
+
+                        <!-- Touch Targets to switch active description -->
+                        <div class="grid grid-cols-3 gap-1.5 pt-2 border-t border-brand-charcoal">
+                            <div onclick="selectAchievement('viral')" class="aspect-square bg-brand-charcoal rounded-md cursor-pointer flex items-center justify-center text-lg hover:opacity-80 transition-all relative">
+                                🎬
+                                <span class="absolute bottom-1 right-1 text-[7px] text-white bg-black/60 px-1 py-0.5 rounded">26M</span>
+                            </div>
+                            <div onclick="selectAchievement('flight')" class="aspect-square bg-brand-charcoal rounded-md cursor-pointer flex items-center justify-center text-lg hover:opacity-80 transition-all relative">
+                                ✈️
+                                <span class="absolute bottom-1 right-1 text-[7px] text-white bg-black/60 px-1 py-0.5 rounded">Biz</span>
+                            </div>
+                            <div onclick="selectAchievement('pr')" class="aspect-square bg-brand-charcoal rounded-md cursor-pointer flex items-center justify-center text-lg hover:opacity-80 transition-all relative">
+                                📦
+                                <span class="absolute bottom-1 right-1 text-[7px] text-white bg-black/60 px-1 py-0.5 rounded">PR</span>
+                            </div>
+                            <div onclick="selectAchievement('sport')" class="aspect-square bg-brand-charcoal rounded-md cursor-pointer flex items-center justify-center text-lg hover:opacity-80 transition-all relative">
+                                🏹
+                                <span class="absolute bottom-1 right-1 text-[7px] text-white bg-black/60 px-1 py-0.5 rounded">Play</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Description Window -->
+                <div class="md:col-span-7 space-y-6 mt-6 md:mt-0">
+                    <span class="bg-brand-red/10 text-brand-red text-[10px] font-bold uppercase px-3 py-1 rounded-full">Organic Influence Case Study</span>
+                    
+                    <div id="ach-showcase-area" class="space-y-4">
+                        <h4 id="ach-title" class="text-xl font-bold text-brand-slate">My First Ever Viral Reel Campaign</h4>
+                        <div class="flex items-center gap-4 text-xs font-bold text-gray-400">
+                            <span class="flex items-center gap-1"><i data-lucide="eye" class="w-4 h-4 text-brand-red"></i> 26,000,000+ Views</span>
+                            <span class="flex items-center gap-1"><i data-lucide="heart" class="w-4 h-4 text-brand-red"></i> 942,000+ Likes</span>
+                        </div>
+                        <p id="ach-desc" class="text-xs text-gray-500 font-light leading-relaxed">
+                            Strategized, shot, and deployed lifestyle content resulting in immediate viral distribution triggers, scaling organic reach directly on Instagram. Proof of viral psychology mastery.
+                        </p>
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 italic">👉 Tap on the Instagram app grid squares to inspect each achievement.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Robust Event Media Gallery -->
+    <section id="gallery" class="py-24 px-6 lg:px-16 bg-white border-t border-brand-sand/60">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red uppercase text-xs font-black tracking-widest">Evidence of Work</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-slate">Behind the Scenes at Google</h2>
+                <p class="text-gray-500 text-sm font-light">Direct look into campaign management, hosting setups, and customized event experiences engineered at Google.</p>
+            </div>
+
+            <!-- Grid Layout ensuring high compatibility -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_6519.jpg" alt="Brandcast Portrait" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Brandcast Creator Portrait</h4>
+                        <p class="text-xs text-gray-400">IMG_6519.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_6502.jpg" alt="Main Stage" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">YouTube Main Stage Design</h4>
+                        <p class="text-xs text-gray-400">IMG_6502.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="f09e2927-29e2-41d7-b7d2-9109e517058a.jpg" alt="Google HQ" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Google Operations HQ</h4>
+                        <p class="text-xs text-gray-400">f09e2927-29e2-41d7-b7d2-9109e517058a.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_7530.jpg" alt="Host Crew" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">CreatorVerse Host Team</h4>
+                        <p class="text-xs text-gray-400">IMG_7530.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_8191.jpg" alt="Event Catering" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Themed Event Experience</h4>
+                        <p class="text-xs text-gray-400">IMG_8191.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_8195.jpg" alt="Collective Zone" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Creator Collective Zone</h4>
+                        <p class="text-xs text-gray-400">IMG_8195.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_7531.jpg" alt="Branding Wall" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Entrance Activation Layout</h4>
+                        <p class="text-xs text-gray-400">IMG_7531.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_7218.jpg" alt="Stage Production" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Stage Production Array</h4>
+                        <p class="text-xs text-gray-400">IMG_7218.jpg</p>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="bg-brand-cream border border-brand-sand rounded-3xl p-4 space-y-4">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-brand-charcoal flex items-center justify-center">
+                        <img src="IMG_8196.jpg" alt="Boardroom Meeting" class="w-full h-full object-cover" onerror="fallbackToAlternative(this)">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-slate">Executive Alignment Boardroom</h4>
+                        <p class="text-xs text-gray-400">IMG_8196.jpg</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Match Evaluator -->
+    <section id="skills" class="py-24 px-6 lg:px-16 bg-brand-cream border-t border-brand-sand">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red uppercase text-xs font-black tracking-widest">Team Fit Match</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-slate">Interactive Performance Evaluator</h2>
+                <p class="text-gray-500 text-sm font-light">Toggle team priorities below to live-calculate my skill alignments.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-[2.5rem] border border-brand-sand space-y-8 shadow-sm">
+                
+                <div class="space-y-3">
+                    <label class="block text-xs font-bold text-brand-slate uppercase tracking-wider">Hiring Goal</label>
+                    <select id="fit-dropdown" onchange="updateMatchEvaluation()" class="w-full bg-brand-cream border border-brand-sand px-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-red">
+                        <option value="lead">Campaign Strategy & Enterprise Syncs (L'Oréal, Samsung, Unilever)</option>
+                        <option value="data">Data Analytics & Sheets AppScript Automation</option>
+                        <option value="creator">Creator Partnerships, Deals, and Event Management</option>
+                    </select>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold text-brand-slate">
+                            <span>CAMPAIGN OPERATIONS & LIFECYCLE DEPLOYMENT</span>
+                            <span id="skill-p-1">98%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div id="skill-b-1" class="h-full bg-brand-red rounded-full transition-all duration-700" style="width: 98%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold text-brand-slate">
+                            <span>APPSCRIPT CODING & AUTOMATED DASHBOARDS</span>
+                            <span id="skill-p-2">92%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div id="skill-b-2" class="h-full bg-brand-slate rounded-full transition-all duration-700" style="width: 92%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold text-brand-slate">
+                            <span>CREATOR OUTREACH, CONTRACTS & NEGOTIATIONS</span>
+                            <span id="skill-p-3">95%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div id="skill-b-3" class="h-full bg-brand-red rounded-full transition-all duration-700" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-brand-cream border border-brand-sand rounded-xl flex items-start gap-3">
+                    <span class="text-xl">📈</span>
+                    <p id="eval-fit-text" class="text-xs text-gray-500 font-light leading-relaxed">
+                        Sanjana's direct experience leading concurrent enterprise client campaign pipelines across Google/YouTube Ads makes her an immediate impact hire.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-24 px-6 lg:px-16 bg-brand-cream">
+        <div class="max-w-5xl mx-auto bg-white rounded-[2.5rem] border border-brand-sand p-8 sm:p-16 grid grid-cols-1 md:grid-cols-12 gap-12 items-center shadow-lg">
+            
+            <div class="md:col-span-5 space-y-6">
+                <span class="text-brand-red uppercase text-xs font-black tracking-widest">Connect Directly</span>
+                <h2 class="text-3xl font-serif font-bold text-brand-slate">Let's build.</h2>
+                <p class="text-xs text-gray-400 font-light leading-relaxed">
+                    Based in Bengaluru, India. Open to high-impact strategist and program manager opportunities.
+                </p>
+
+                <div class="space-y-4 pt-4 border-t border-brand-sand text-xs text-gray-600">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-4 h-4 text-brand-red"></i>
+                        <span>sanjanapyasii@gmail.com</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="linkedin" class="w-4 h-4 text-brand-red"></i>
+                        <span>linkedin.com/in/sanjana-pyasi-a57088189</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-red"></i>
+                        <span>+91-9981076588</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-7">
+                <form id="contact-form" onsubmit="handleFormSubmission(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-gray-600 uppercase">Your Name</label>
+                            <input required type="text" id="contact-name" placeholder="John Doe" class="w-full bg-brand-cream border border-brand-sand rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-red">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-gray-600 uppercase">Your Email</label>
+                            <input required type="email" id="contact-email" placeholder="john@unilever.com" class="w-full bg-brand-cream border border-brand-sand rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-red">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-600 uppercase">Hiring Company</label>
+                        <input type="text" id="contact-company-node" placeholder="E.g. Samsung" class="w-full bg-brand-cream border border-brand-sand rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-600 uppercase">Details</label>
+                        <textarea required id="contact-details" rows="3" placeholder="Sanjana, we loved your dashboard automation at Google and have an open role..." class="w-full bg-brand-cream border border-brand-sand rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-red resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-slate hover:bg-brand-red text-white transition-all py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2">
+                        <span>Send Message</span>
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </form>
+                <div id="form-success-banner" class="hidden mt-4 p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl space-y-1">
+                    <p class="text-xs font-bold">🎉 Message Sent Successfully!</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-brand-sand/60 bg-brand-cream text-center">
+        <p class="text-xs text-gray-400 font-bold tracking-widest uppercase">Sanjana Pyasi &copy; 2026. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="hidden fixed inset-0 bg-brand-slate/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] border border-brand-sand max-w-3xl w-full max-h-[85vh] flex flex-col justify-between shadow-2xl overflow-hidden">
+            <div class="p-6 border-b border-brand-sand flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-brand-slate">Sanjana Pyasi</h3>
+                    <p class="text-[10px] uppercase font-bold text-brand-red text-sans">Digital Marketing Specialist — Curriculum Vitae</p>
+                </div>
+                <button onclick="toggleResumeModal()" class="w-8 h-8 rounded-full bg-brand-cream border border-brand-sand flex items-center justify-center hover:bg-brand-red hover:text-white transition-all">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar text-xs">
+                <p class="text-gray-500 font-light leading-relaxed">
+                    Digital marketing professional with hands-on experience leading creator, content, and campaign operations at Google across YouTube and global enterprise advertisers (L'Oréal, Unilever, Samsung).
+                </p>
+                <div class="space-y-4">
+                    <h5 class="font-bold text-brand-slate border-b pb-1 uppercase tracking-wider">Experience Highlight</h5>
+                    <div>
+                        <p class="font-bold text-brand-slate">Google — Digital Marketing Apprentice (Jun 2024 - Present)</p>
+                        <p class="text-[10px] text-gray-400 mb-2">Bangalore, India</p>
+                        <ul class="list-disc pl-5 text-gray-500 space-y-1 font-light">
+                            <li>Manage operations for L'Oréal, Unilever, Samsung across YouTube & Ads.</li>
+                            <li>Built 4+ Apps Script dashboard templates reducing manual work by 40%.</li>
+                            <li>Led execution logistics across 15+ events and onboarding for 45+ creators.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 border-t border-brand-sand bg-brand-cream flex items-center justify-between">
+                <span class="text-[10px] text-gray-400">Bangalore, India</span>
+                <button onclick="toggleResumeModal()" class="bg-brand-slate text-white font-bold px-4 py-2 rounded-xl">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Code -->
+    <script>
+        lucide.createIcons();
+
+        const projectDetails = {
+            1: {
+                tag: "Google Events Ops",
+                title: "CreatorVerse, Creator Collective, Brandcast & YouTube Fanfest",
+                id: "01",
+                desc: "Supported planning and execution of large-scale creator ecosystem events designed to connect creators, advertisers, agencies, and internal stakeholders.",
+                milestones: [
+                    "Event operations and logistics coordination for 15+ high-profile events.",
+                    "Aligned and managed over 45+ top creator accounts with on-time deliveries.",
+                    "Stakeholder communication and alignment.",
+                    "Creator onboarding, checklist automation, and general team support."
+                ]
+            },
+            2: {
+                tag: "Brand Deals",
+                title: "Brand Deals & SpeedConnects",
+                id: "02",
+                desc: "Worked on creator-brand partnership initiatives aimed at connecting advertisers with relevant creators for impactful collaborations.",
+                milestones: [
+                    "Supported creator matchmaking and campaign coordination for global accounts (L'Oréal, Unilever, Samsung).",
+                    "Maintained tracking systems for partnership opportunities.",
+                    "Coordinated between creators, agencies, and internal stakeholders.",
+                    "Assisted in performance tracking and reporting."
+                ]
+            },
+            3: {
+                tag: "Agency Ops Desk",
+                title: "Pseudo Agency Relationship Manager",
+                id: "03",
+                desc: "Acted as an extension of the Agency Relationship Management function by supporting agency partners and helping drive advertiser success through operational excellence.",
+                milestones: [
+                    "Supported agency-facing communications.",
+                    "Assisted with campaign planning and execution.",
+                    "Created performance reports and insights.",
+                    "Coordinated advertiser requirements with internal teams."
+                ]
+            },
+            4: {
+                tag: "KMS & Analytics Desk",
+                title: "Meeting Records Dashboard & KMS Dashboard",
+                id: "04",
+                desc: "Designed and maintained a centralized dashboard to document meeting outcomes, action items, project updates, and business decisions for the team.",
+                milestones: [
+                    "Created automated tracking systems cutting effort by 40%.",
+                    "Organized meeting records and action items.",
+                    "Built reporting views for leadership visibility.",
+                    "Improved documentation and team alignment."
+                ]
+            }
+        };
+
+        function selectCampaign(id) {
+            for (let i = 1; i <= 4; i++) {
+                const card = document.getElementById(`cp-card-${i}`);
+                if (card) card.className = "p-5 rounded-2xl border border-brand-sand/75 hover:border-brand-red/40 bg-white shadow-sm cursor-pointer transition-all duration-300";
+            }
+            document.getElementById(`cp-card-${id}`).className = "p-5 rounded-2xl border-2 border-brand-red bg-white shadow-sm cursor-pointer transition-all duration-300";
+
+            const data = projectDetails[id];
+            document.getElementById('camp-tag').innerText = data.tag;
+            document.getElementById('camp-title').innerText = data.title;
+            document.getElementById('camp-id').innerText = data.id;
+            document.getElementById('camp-desc').innerText = data.desc;
+
+            const list = document.getElementById('camp-deliverables');
+            list.innerHTML = '';
+            data.milestones.forEach(m => {
+                list.innerHTML += `
+                    <li class="flex items-center gap-2.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                        <span>${m}</span>
+                    </li>
+                `;
+            });
+
+            const widget = document.getElementById('kms-simulation-widget');
+            if (id === 4) {
+                widget.classList.remove('hidden');
+            } else {
+                widget.classList.add('hidden');
+            }
+        }
+
+        const achievements = {
+            viral: {
+                title: "My First Ever Viral Reel Campaign",
+                metric1: "26,000,000+ Views",
+                metric2: "942,000+ Likes",
+                desc: "Strategized, shot, and deployed lifestyle content resulting in immediate viral distribution triggers, scaling organic reach directly on Instagram. Proof of viral psychology mastery."
+            },
+            flight: {
+                title: "First Ever Sponsored Business Flight",
+                metric1: "Fully Sponsored Voyage",
+                metric2: "Brand Backed Collaboration",
+                desc: "Invited as a creator on my first brand-sponsored business trip. Created integrated stories and content briefs with partner companies."
+            },
+            pr: {
+                title: "Received Organic PR Packages",
+                metric1: "Unboxing Collaborations",
+                metric2: "E-Commerce Influencing",
+                desc: "Established close relations with major lifestyle, fashion, and beauty labels to receive and test PR collections, generating direct organic social impressions."
+            },
+            sport: {
+                title: "Learning My Favorite Sport: Archery",
+                metric1: "Dynamic Aim Training",
+                metric2: "Precision Strategy Ops",
+                desc: "Actively training and focusing on archery, building mental endurance, target focus under pressure, and physical balance."
+            }
+        };
+
+        function selectAchievement(key) {
+            const data = achievements[key];
+            document.getElementById('ach-title').innerText = data.title;
+            document.getElementById('ach-showcase-area').querySelector('.text-gray-400').innerHTML = `
+                <span class="flex items-center gap-1"><i data-lucide="eye" class="w-4 h-4 text-brand-red"></i> ${data.metric1}</span>
+                <span class="flex items-center gap-1"><i data-lucide="heart" class="w-4 h-4 text-brand-red"></i> ${data.metric2}</span>
+            `;
+            document.getElementById('ach-desc').innerText = data.desc;
+            lucide.createIcons();
+        }
+
+        function updateMatchEvaluation() {
+            const dropdown = document.getElementById('fit-dropdown');
+            const value = dropdown.value;
+
+            const config = {
+                lead: {
+                    scores: [98, 92, 95],
+                    text: "Sanjana's experience managing L'Oréal, Samsung, and Unilever campaign pipelines across YouTube & Ads makes her an immediate impact hire."
+                },
+                data: {
+                    scores: [88, 100, 85],
+                    text: "Exceptional analytical alignment. Sanjana's automated dashboards and Google Apps Script integrations cut manual tracking overhead by 40%."
+                },
+                creator: {
+                    scores: [92, 85, 100],
+                    text: "Excellent fit for brand-deal matching desks. Extensive event operations, logistics coordination, and direct support of 45+ creators across 15+ campaigns."
+                }
+            };
+
+            const data = config[value];
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`skill-p-${i}`).innerText = `${data.scores[i-1]}%`;
+                document.getElementById(`skill-b-${i}`).style.width = `${data.scores[i-1]}%`;
+            }
+            document.getElementById('eval-fit-text').innerText = data.text;
+        }
+
+        function switchAboutTab(activeKey) {
+            const tabJobs = document.getElementById('tab-jobs');
+            const tabEdu = document.getElementById('tab-edu');
+            const btnJobs = document.getElementById('btn-job-track');
+            const btnEdu = document.getElementById('btn-edu-track');
+
+            if (activeKey === 'jobs') {
+                tabJobs.classList.remove('hidden');
+                tabEdu.classList.add('hidden');
+                btnJobs.className = "px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase bg-brand-slate text-brand-cream";
+                btnEdu.className = "px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase text-gray-500";
+            } else {
+                tabJobs.classList.add('hidden');
+                tabEdu.classList.remove('hidden');
+                btnJobs.className = "px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase text-gray-500";
+                btnEdu.className = "px-6 py-2 rounded-full text-xs font-bold tracking-wider uppercase bg-brand-slate text-brand-cream";
+            }
+        }
+
+        function personalizePortfolio() {
+            const company = document.getElementById('recruiter-company').value.trim();
+            if(!company) return;
+            document.getElementById('welcome-badge').innerHTML = `<span>🤝</span> SPECIALLY CUSTOMIZED FOR ${company.toUpperCase()}`;
+            document.getElementById('contact-company-node').value = company;
+        }
+
+        function toggleResumeModal() {
+            document.getElementById('resume-modal').classList.toggle('hidden');
+        }
+
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            document.getElementById('form-success-banner').classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+            setTimeout(() => {
+                document.getElementById('form-success-banner').classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
